@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数学世界奇遇记 · 正式入口</title>
+<meta name="description" content="说书人「阿列夫」主持的对话式数学冒险 · 723 篇 OpenAI 数学手稿 · 五关一境。正式版入口，自动跳转。">
+<meta http-equiv="refresh" content="5;url=https://math-adventure-95023.app.workbuddy.host/?sharecode=2Q4RSLNNW4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E%E2%84%B5%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--bg:#f7f5ef;--ink:#2c2620;--ink-soft:#8a7f70;--gold:#b8862a;--gold-soft:#e9d9b8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:var(--bg);color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC",STSong,serif;
+    overflow:hidden;
+  }
+  /* 数字符氛围层 */
+  .floats{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .floats span{
+    position:absolute;font-size:26px;color:var(--gold);opacity:.07;
+    animation:rise linear infinite;
+  }
+  @keyframes rise{
+    0%{transform:translateY(105vh) rotate(0deg)}
+    100%{transform:translateY(-15vh) rotate(360deg)}
+  }
+  .stage{position:relative;z-index:1;text-align:center;padding:32px;max-width:640px}
+  .aleph{
+    font-size:72px;line-height:1;color:var(--gold);
+    text-shadow:0 0 24px rgba(184,134,42,.25);
+    animation:breathe 3s ease-in-out infinite;
+  }
+  @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  h1{font-size:34px;margin:18px 0 10px;letter-spacing:.12em}
+  .sub{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+  .go{margin:34px 0 14px;font-size:15px}
+  .go b{color:var(--gold)}
+  .bar{
+    width:220px;height:3px;margin:0 auto 26px;
+    background:var(--gold-soft);border-radius:2px;overflow:hidden;
+  }
+  .bar i{display:block;height:100%;width:0;background:var(--gold);animation:fill 5s linear forwards}
+  @keyframes fill{to{width:100%}}
+  .btn{
+    display:inline-block;padding:11px 30px;border-radius:999px;
+    background:var(--gold);color:#fff;text-decoration:none;font-size:15px;letter-spacing:.08em;
+    box-shadow:0 4px 14px rgba(184,134,42,.3);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 7px 18px rgba(184,134,42,.4)}
+  .tip{margin-top:26px;font-size:12.5px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+  <div class="floats" id="floats"></div>
+  <div class="stage">
+    <div class="aleph">ℵ</div>
+    <h1>数学世界奇遇记</h1>
+    <p class="sub">说书人「阿列夫」主持的对话式数学冒险<br>723 篇 OpenAI 数学手稿 · 五关一境 · 思路走不通就被放逐</p>
+    <p class="go">正在带你进入正式版，<b><span id="t">5</span></b> 秒后起跳……</p>
+    <div class="bar"><i></i></div>
+    <a class="btn" id="enter" href="https://math-adventure-95023.app.workbuddy.host/?sharecode=2Q4RSLNNW4">立即进入 ↗</a>
+    <p class="tip">AI 主理人只住在正式链接里——本页是入口，不停车。</p>
+  </div>
+<script>
+(function(){
+  var OFFICIAL = 'https://math-adventure-95023.app.workbuddy.host/?sharecode=2Q4RSLNNW4';
+  document.getElementById('enter').href = OFFICIAL;
+  var left = 5, tEl = document.getElementById('t');
+  var timer = setInterval(function(){
+    left--;
+    if(left <= 0){ clearInterval(timer); location.replace(OFFICIAL); }
+    else tEl.textContent = left;
+  }, 1000);
+  // 数字符氛围
+  var box = document.getElementById('floats');
+  var chars = ['ℵ','π','∞','∑','∮','√','λ','Δ','∇','∈','⊕','⊗','∫','ℝ','φ','θ'];
+  for(var i=0;i<16;i++){
+    var s = document.createElement('span');
+    s.textContent = chars[i % chars.length];
+    s.style.left = (Math.random()*96+2) + '%';
+    s.style.animationDuration = (14+Math.random()*16) + 's';
+    s.style.animationDelay = (-Math.random()*20) + 's';
+    s.style.fontSize = (16+Math.random()*24) + 'px';
+    box.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
